@@ -26,7 +26,7 @@ opts.require.forEach(function (mod) {
   require(mod)
 })
 
-opts.scripts.forEach(function (script) {
+opts.script.forEach(function (script) {
   var tag = document.createElement('script')
   tag.src = script
   tag.async = false
