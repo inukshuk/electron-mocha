@@ -32,6 +32,7 @@ function parse (argv) {
     .option('--opts <path>', 'specify opts path', 'test/mocha.opts')
     .option('--recursive', 'include sub directories')
     .option('--renderer', 'run tests in renderer process')
+    .option('--script <name>', 'preload the given script in renderer', list, [])
 
   program.on('globals', function (val) {
     globals = globals.concat(list(val))
