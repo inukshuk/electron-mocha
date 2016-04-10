@@ -31,7 +31,7 @@ function parse (argv) {
     .option('--opts <path>', 'specify opts path', 'test/mocha.opts')
     .option('--recursive', 'include sub directories')
     .option('--renderer', 'run tests in renderer process')
-    .option('--script <name>', 'preload the given script in renderer', modules, [])
+    .option('--preload <name>', 'preload the given script in renderer', modules, [])
 
   program.on('globals', function (val) {
     globals = globals.concat(list(val))
@@ -55,10 +55,11 @@ function list (str) {
   return str.split(/ *, */)
 }
 
-function modules(mod, memo) {
+function modules (mod, memo) {
   var abs = fs.existsSync(mod) || fs.existsSync(mod + '.js')
   if (abs) mod = resolve(mod)
   memo.push(mod)
+  return memo
 }
 
 module.exports = {
